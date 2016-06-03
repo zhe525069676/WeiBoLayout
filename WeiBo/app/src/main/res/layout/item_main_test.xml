@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/zhe_black1"
+    android:orientation="vertical"
+    android:padding="@dimen/zhe_dp10">
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/zhe_black4"
+        android:textSize="@dimen/zhe_sp14" />
+
+    <com.zheblog.weibogridview.view.FeedGridView
+        android:id="@+id/gv_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/zhe_dp10"
+        android:horizontalSpacing="@dimen/zhe_dp10"
+        android:listSelector="@color/zhe_transparent"
+        android:scrollbars="none"
+        android:stretchMode="none"
+        android:verticalSpacing="@dimen/zhe_dp10" />
+
+</LinearLayout>

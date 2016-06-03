@@ -3,26 +3,30 @@ package com.zheblog.weibogridview.view;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import com.zheblog.weibogridview.adapter.FeedPhotoAdapter;
 import com.zheblog.weibogridview.model.FeedPhotoModel;
 import com.zheblog.weibogridview.util.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by liuz on 16/6/3.
  */
 public class FeedGridView extends BaseGridView implements AdapterView.OnItemClickListener {
 
-    //当发布动态时，每行显示4个
-    public boolean isPublish;
+    private static final String TAG = "FeedGridView";
+
+    private List<FeedPhotoModel> mDatas = new ArrayList<>();
 
     public FeedGridView(Context context) {
         super(context);
@@ -37,35 +41,27 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
     }
 
     private FeedPhotoAdapter photoAdapter;
-    private String[] mBigImgs;
     private int mColumnNum;
 
-    public void setPhotoAdapter(LayoutInflater inflater, String[] imgs, String[] bigImgs) {
-        mBigImgs = bigImgs;
-        ArrayList<FeedPhotoModel> photoList = new ArrayList<>();
-        for (String imgStr : imgs) {
-            FeedPhotoModel photoModel = new FeedPhotoModel();
-            photoModel.setUrl(imgStr);
-            photoList.add(photoModel);
-        }
-        if (!isPublish) {
-            int count = photoList.size();
-            //一张图片的时候也是占1/2
-            if (count == 1 || count == 2 || count == 4) {
-                mColumnNum = 2;
-                setNumColumns(2);
-            } else {
-                mColumnNum = 3;
-                setNumColumns(3);
-            }
+    public void setPhotoAdapter(List<FeedPhotoModel> imgs) {
+        mDatas.clear();
+        mDatas.addAll(imgs);
+        int count = mDatas.size();
+        //一张图片的时候也是占1/2
+        if (count == 1 || count == 2 || count == 4) {
+            mColumnNum = 2;
+            setNumColumns(2);
+        } else {
+            mColumnNum = 3;
+            setNumColumns(3);
         }
         int width = calculateColumnWidth();
         setColumnWidth(width);
-        photoAdapter = new FeedPhotoAdapter(getContext(), photoList, inflater, width);
+        photoAdapter = new FeedPhotoAdapter((Activity) getContext(), mDatas, width);
         this.setAdapter(photoAdapter);
         this.setOnItemClickListener(this);
         photoAdapter.notifyDataSetChanged();
-        setGridViewWidthBasedOnChildren(this, photoList.size());
+        setGridViewWidthBasedOnChildren(this, mDatas.size());
     }
 
     private int calculateColumnWidth() {
@@ -120,9 +116,6 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        ArrayList<String> photoList = new ArrayList<>();
-        for (String str : mBigImgs) {
-            photoList.add(str);
-        }
+        Toast.makeText(getContext(), "position:" + position, Toast.LENGTH_SHORT).show();
     }
 }

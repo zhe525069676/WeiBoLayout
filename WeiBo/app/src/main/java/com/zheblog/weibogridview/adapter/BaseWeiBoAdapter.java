@@ -14,7 +14,10 @@ public abstract class BaseWeiBoAdapter<T> extends BaseAdapter {
     protected List<T> mEntities;
 
     protected Context mContext;
-    public BaseWeiBoAdapter(){}
+
+    public BaseWeiBoAdapter() {
+    }
+
     public BaseWeiBoAdapter(Context context, List<T> mEntities) {
         this.mContext = context;
         this.mEntities = mEntities;
@@ -26,7 +29,9 @@ public abstract class BaseWeiBoAdapter<T> extends BaseAdapter {
      *
      * @param datas
      */
-    protected abstract void setDatas(List<T> datas);
+    private void setDatas(List<T> datas) {
+        setListDatas(datas);
+    }
 
     public void setListDatas(List<T> datas) {
         if (datas == null) {

@@ -1,7 +1,6 @@
 package com.zheblog.weibogridview.adapter;
 
-import android.content.Context;
-import android.net.Uri;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,19 +17,14 @@ import java.util.List;
  */
 public class FeedPhotoAdapter extends BaseWeiBoAdapter<FeedPhotoModel> {
 
-    private LayoutInflater mInflater;
-
     private int mColumnWidth;
 
-    public FeedPhotoAdapter(Context context, List<FeedPhotoModel> mEntities, LayoutInflater mInflater, int mColumnWidth) {
-        super(context, mEntities);
-        this.mInflater = mInflater;
-        this.mColumnWidth = mColumnWidth;
-    }
+    private LayoutInflater mInflater;
 
-    @Override
-    protected void setDatas(List<FeedPhotoModel> datas) {
-        setListDatas(datas);
+    public FeedPhotoAdapter(Activity context, List<FeedPhotoModel> mEntities, int mColumnWidth) {
+        super(context, mEntities);
+        this.mColumnWidth = mColumnWidth;
+        this.mInflater = context.getLayoutInflater();
     }
 
     @Override
@@ -44,7 +38,7 @@ public class FeedPhotoAdapter extends BaseWeiBoAdapter<FeedPhotoModel> {
         params.width = mColumnWidth;
         params.height = mColumnWidth;
         photo.setLayoutParams(params);
-        photo.setImageURI(Uri.parse(item.getUrl()));
+        photo.setImageResource(item.getLocalRes());
 
         return convertView;
     }
