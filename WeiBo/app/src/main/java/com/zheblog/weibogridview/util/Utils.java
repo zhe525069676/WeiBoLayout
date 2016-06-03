@@ -22,15 +22,15 @@ public class Utils {
     }
 
     /**
-     * px转换dp
+     * dp转换px
      *
-     * @param activity
+     * @param context
      * @param value
      * @return
      */
-    public static int px2dp(Context activity, float value) {
-        final float scale = activity.getResources().getDisplayMetrics().densityDpi;
-        return (int) ((value * 160) / scale + 0.5f);
+    public static int dp2px(Context context,float value) {
+        final float scale = context.getResources().getDisplayMetrics().densityDpi;
+        return (int) (value * (scale / 160) + 0.5f);
     }
 
 }

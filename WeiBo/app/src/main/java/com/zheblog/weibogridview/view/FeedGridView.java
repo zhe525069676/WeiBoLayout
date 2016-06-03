@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -67,10 +66,11 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
     private int calculateColumnWidth() {
         int width = Utils.getScreenWidth((Activity) getContext());
         if (mColumnNum == 2) {
-            width = width / mColumnNum - Utils.px2dp(getContext(), 24 * 2 + 10);
+            width = (width - Utils.dp2px(getContext(), 10 * 2 + 10)) / mColumnNum;
         } else if (mColumnNum == 3) {
-            width = width / mColumnNum - Utils.px2dp(getContext(), 24 * 2 + 10 * 2);
+            width = (width - Utils.dp2px(getContext(), 10 * 2 + 10 * 2)) / mColumnNum;
         }
+        Log.d(TAG, "width:" + width);
         return width;
     }
 
@@ -88,11 +88,11 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
         }
         // 固定列宽，有多少列
         int col = count;
-        if (count == 4) {
-            col = 2;
-        }
         if (listAdapter.getCount() < count) {
             col = listAdapter.getCount();
+        }
+        if (count == 4) {
+            col = 2;
         }
         int totalWidth = 0;
         for (int i = 0; i < col; i++) {
@@ -100,11 +100,7 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
             View listItem = listAdapter.getView(i, null, gridView);
             listItem.measure(0, 0);
             // 获取item的宽度和
-            if (i == 0) {
-                totalWidth += listItem.getMeasuredWidth() + 5;
-            } else {
-                totalWidth += listItem.getMeasuredWidth() + 10;
-            }
+            totalWidth += listItem.getMeasuredWidth() + 10 * 2;
         }
         // 获取gridview的布局参数
         ViewGroup.LayoutParams params = gridView.getLayoutParams();
