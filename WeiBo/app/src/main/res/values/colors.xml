@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="zhe_transparent">#00000000</color>
+    <color name="zhe_black">#FF000000</color>
+    <color name="zhe_black1">#FFF9F9F9</color>
+    <color name="zhe_black2">#FFE9E9E9</color>
+    <color name="zhe_black3">#FF666666</color>
+    <color name="zhe_black4">#99333333</color>
+    <color name="zhe_black5">#FF999999</color>
+    <color name="zhe_black6">#FFCCCCCC</color>
 </resources>
