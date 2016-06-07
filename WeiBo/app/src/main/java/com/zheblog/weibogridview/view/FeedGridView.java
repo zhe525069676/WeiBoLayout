@@ -70,7 +70,6 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
         } else if (mColumnNum == 3) {
             width = (width - Utils.dp2px(getContext(), 10 * 2 + 10 * 2)) / mColumnNum;
         }
-        Log.d(TAG, "width:" + width);
         return width;
     }
 

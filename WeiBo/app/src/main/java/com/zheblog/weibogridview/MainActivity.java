@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
             for (int j = 0; j < i; j++) {
                 list.add(new FeedPhotoModel(R.mipmap.icon_head));
             }
-            feedModel.setContent("第" + i + "条信息");
+            feedModel.setContent("#高考内点事儿#祝考生们考出好成绩~~@考生"+i+"\u200B,加油!!!www.zheblog.com");
             feedModel.setPhotoModels(list);
             mDatas.add(feedModel);
         }

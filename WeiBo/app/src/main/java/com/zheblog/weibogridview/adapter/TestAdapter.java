@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zheblog.weibogridview.R;
+import com.zheblog.weibogridview.biz.ClickableTextViewMentionLinkOnTouchListener;
+import com.zheblog.weibogridview.biz.TimeLineUtility;
 import com.zheblog.weibogridview.model.FeedModel;
 import com.zheblog.weibogridview.view.FeedGridView;
 import com.zheblog.weibogridview.viewholder.ViewHolder;
@@ -36,7 +38,8 @@ public class TestAdapter extends BaseWeiBoAdapter<FeedModel> {
         TextView tvContent = ViewHolder.get(convertView, R.id.tv_content);
         FeedGridView gvPhoto = ViewHolder.get(convertView, R.id.gv_photo);
 
-        tvContent.setText(item.getContent());
+        tvContent.setText(TimeLineUtility.convertNormalStringToSpannableString(item.getContent(), TimeLineUtility.TimeLineStatus.FEED));
+        tvContent.setOnTouchListener(new ClickableTextViewMentionLinkOnTouchListener());
         gvPhoto.setPhotoAdapter(item.getPhotoModels());
 
         return convertView;
