@@ -1,10 +1,11 @@
-# WeiBoGridView
-类似微博、微信展示动态(Feed)图片，不同数量不同布局的GridView。
+# WeiBoLayout
+仿微博、微信QQ，包含展示动态(Feed)图片，不同数量不同布局的GridView和识别包含超链接、#字话题、@人的文本效果。
 ---
 
-###WeiBoGridView是根据显示子View的个数，使其填充满屏幕宽度的View，适用于社交软件Feed的展示。
+###WeiBoLayout中的FeedGridView是根据显示子View的个数，使其填充满屏幕宽度的View，WeiBoLayout可识别文本中的超链接、#字话题、@人，适用于社交软件Feed的展示。
 
-XML:
+
+FeedGridView XML:
 
 ```
 <com.zheblog.weibogridview.view.FeedGridView
@@ -19,7 +20,7 @@ XML:
         android:verticalSpacing="@dimen/zhe_dp10" />
 ```
 
-代码：
+FeedGridView 使用代码：
 
 ```
 gvPhoto.setPhotoAdapter(item.getPhotoModels());
@@ -27,12 +28,28 @@ gvPhoto.setPhotoAdapter(item.getPhotoModels());
 
 动态效果图：
 
-![zheblog](http://7xom0g.com1.z0.glb.clouddn.com/WeiBoGridView.gif)
+![FeedGridView](http://7xom0g.com1.z0.glb.clouddn.com/WeiBoGridView.gif)
+
+识别文本中的超链接、#字话题、@人的文本
+
+```
+tvContent.setText(TimeLineUtility.convertNormalStringToSpannableString(item.getContent(), TimeLineUtility.TimeLineStatus.FEED));
+tvContent.setOnTouchListener(new ClickableTextViewMentionLinkOnTouchListener());
+```
+```
+//LINK单一识别超链接
+//FEED识别超链接、#字话题、@人
+public enum TimeLineStatus {
+        LINK, FEED
+    }
+```
+动态效果图：
+
+![识别文本](http://7xom0g.com1.z0.glb.clouddn.com/2016-06-07%2012_00_57.gif)
 
 ###[GitHub代码下载](https://github.com/zhe525069676/WeiBoGridView)
 
 ###最后
-<mark>注</mark>：后期会增加#字话题、链接、@人的识别。
 
 如果对您有帮助请Star，有问题随时联系我，谢谢.
 
@@ -40,5 +57,7 @@ gvPhoto.setPhotoAdapter(item.getPhotoModels());
 QQ:525069676
 
 邮箱:nh_zhe@163.com
+
+[简书](http://www.jianshu.com/users/550d52af9d72/latest_articles)
 
 [个人博客](http://www.zheblog.com)
