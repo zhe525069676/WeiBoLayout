@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.zheblog.weibogridview"
-        minSdkVersion 19
+        minSdkVersion 12
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
