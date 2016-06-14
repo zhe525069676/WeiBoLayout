@@ -54,9 +54,9 @@ public enum TimeLineStatus {
 如果对您有帮助请Star，有问题随时联系我，谢谢.
 
 ###关于我
-QQ:525069676
+QQ交流群: 496946393
 
-邮箱:nh_zhe@163.com
+邮箱: nh_zhe@163.com
 
 [简书](http://www.jianshu.com/users/550d52af9d72/latest_articles)
 
