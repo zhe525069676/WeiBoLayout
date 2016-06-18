@@ -27,8 +27,7 @@ gvPhoto.setPhotoAdapter(item.getPhotoModels());
 ```
 
 动态效果图：
-
-![FeedGridView](http://7xom0g.com1.z0.glb.clouddn.com/WeiBoGridView.gif)
+![FeedGridView](https://github.com/zhe525069676/WeiBoLayout/blob/master/gif/WeiBoGridView.gif)
 
 识别文本中的超链接、#字话题、@人的文本
 
