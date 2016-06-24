@@ -45,7 +45,7 @@ public enum TimeLineStatus {
 ```
 动态效果图：
 
-![识别文本](http://7xom0g.com1.z0.glb.clouddn.com/Untitled.gif)
+![识别文本](https://github.com/zhe525069676/WeiBoLayout/blob/master/gif/WeiBoLayoutDes.gif)
 
 ###[GitHub代码下载](https://github.com/zhe525069676/WeiBoLayout)
 
