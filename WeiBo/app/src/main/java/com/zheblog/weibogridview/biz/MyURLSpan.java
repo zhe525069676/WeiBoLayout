@@ -7,6 +7,7 @@ import android.text.ParcelableSpan;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 
@@ -16,7 +17,7 @@ import com.zheblog.weibogridview.util.Utils;
 /**
  * Created by liuz on 16/6/7.
  */
-public class MyURLSpan extends ClickableSpan implements ParcelableSpan {
+public class MyURLSpan extends UnderlineSpan implements ParcelableSpan {
 
     private final String mURL;
     private String mColor = Constant.SPAN_LINK_COLOR;
