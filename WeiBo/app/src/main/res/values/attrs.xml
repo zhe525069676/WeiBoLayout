@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="FeedGridView">
+        <attr name="hSpacing" format="dimension" />
+        <attr name="vSpacing" format="dimension" />
+        <attr name="pSpacing" format="dimension" />
+    </declare-styleable>
+
+</resources>

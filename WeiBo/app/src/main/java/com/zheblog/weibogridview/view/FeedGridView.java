@@ -2,6 +2,7 @@ package com.zheblog.weibogridview.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
+import com.zheblog.weibogridview.R;
 import com.zheblog.weibogridview.adapter.FeedPhotoAdapter;
 import com.zheblog.weibogridview.model.FeedPhotoModel;
 import com.zheblog.weibogridview.util.Utils;
@@ -27,12 +29,20 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
 
     private List<FeedPhotoModel> mDatas = new ArrayList<>();
 
+    private int mHorizontalSpacing,mVerticalSpacing, mPaddingSpacing;
+
     public FeedGridView(Context context) {
         super(context);
     }
 
     public FeedGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        TypedArray array = getContext().obtainStyledAttributes(attrs,
+                R.styleable.FeedGridView);
+        mHorizontalSpacing = array.getDimensionPixelSize(R.styleable.FeedGridView_hSpacing, 0);
+        mVerticalSpacing = array.getDimensionPixelSize(R.styleable.FeedGridView_vSpacing, 0);
+        mPaddingSpacing = array.getDimensionPixelSize(R.styleable.FeedGridView_pSpacing, 0);
+        array.recycle();
     }
 
     public FeedGridView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -54,6 +64,10 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
             mColumnNum = 3;
             setNumColumns(3);
         }
+        Log.d("zhe","mHorizontalSpacing:"+mHorizontalSpacing);
+        Log.d("zhe","mVerticalSpacing:"+mVerticalSpacing);
+        setHorizontalSpacing(mHorizontalSpacing);
+        setVerticalSpacing(mVerticalSpacing);
         int width = calculateColumnWidth();
         setColumnWidth(width);
         photoAdapter = new FeedPhotoAdapter((Activity) getContext(), mDatas, width);
@@ -66,9 +80,9 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
     private int calculateColumnWidth() {
         int width = Utils.getScreenWidth((Activity) getContext());
         if (mColumnNum == 2) {
-            width = (width - Utils.dp2px(getContext(), 10 * 2 + 10)) / mColumnNum;
+            width = (width - mPaddingSpacing * 2 - mHorizontalSpacing) / mColumnNum;
         } else if (mColumnNum == 3) {
-            width = (width - Utils.dp2px(getContext(), 10 * 2 + 10 * 2)) / mColumnNum;
+            width = (width - mPaddingSpacing * 2 - mHorizontalSpacing * 2) / mColumnNum;
         }
         return width;
     }
@@ -79,7 +93,7 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
      * @param gridView
      * @param count
      */
-    public static void setGridViewWidthBasedOnChildren(GridView gridView, int count) {
+    public void setGridViewWidthBasedOnChildren(GridView gridView, int count) {
         // 获取gridview的adapter
         ListAdapter listAdapter = gridView.getAdapter();
         if (listAdapter == null) {
@@ -99,7 +113,7 @@ public class FeedGridView extends BaseGridView implements AdapterView.OnItemClic
             View listItem = listAdapter.getView(i, null, gridView);
             listItem.measure(0, 0);
             // 获取item的宽度和
-            totalWidth += listItem.getMeasuredWidth() + 10 * 2;
+            totalWidth += listItem.getMeasuredWidth() + mHorizontalSpacing * 2;
         }
         // 获取gridview的布局参数
         ViewGroup.LayoutParams params = gridView.getLayoutParams();
