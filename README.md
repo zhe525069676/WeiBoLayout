@@ -13,11 +13,17 @@ FeedGridView XML:
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/zhe_dp10"
-        android:horizontalSpacing="@dimen/zhe_dp10"
         android:listSelector="@color/zhe_transparent"
         android:scrollbars="none"
         android:stretchMode="none"
-        android:verticalSpacing="@dimen/zhe_dp10" />
+        app:hSpacing="@dimen/zhe_dp10"
+        app:pSpacing="@dimen/zhe_dp10"
+        app:vSpacing="@dimen/zhe_dp10" />
+```
+```
+hSpacing是水平间距
+vSpacing是垂直间距
+pSpacing是GridView两边距父控件的间距，便于动态计算每个item的宽度
 ```
 
 FeedGridView 使用代码：
