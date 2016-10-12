@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
             for (int j = 0; j < i; j++) {
                 list.add(new FeedPhotoModel(R.mipmap.icon_head));
             }
-            feedModel.setContent("#秋天来了#夏天就这么静悄悄的走了~~@哲匠"+i+"\u200B,加油!!!www.zheblog.com");
+            feedModel.setContent("#秋天来了#夏天就@abc @123 @ab12 @abc12赵钱孙李 这么静悄悄的走了~~@哲匠"+i+"\u200B,加油!!!www.zheblog.com");
             feedModel.setPhotoModels(list);
             mDatas.add(feedModel);
         }
