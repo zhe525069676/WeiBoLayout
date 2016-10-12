@@ -12,7 +12,8 @@ public class WeiboPatterns {
     public static final Pattern TOPIC_URL = Pattern
             .compile("#[\\p{Print}\\p{InCJKUnifiedIdeographs}&&[^#]]+#");
     public static final Pattern MENTION_URL = Pattern
-            .compile("@[\u4e00-\u9fa5a-zA-Z0-9_-·\\.]+[\u200B]");
+            .compile("@([\\u4e00-\\u9fa5\\w\\-]+)");
+//            .compile("@[\u4e00-\u9fa5a-zA-Z0-9_-·\\.]+[\u200B]");
 
     public static final String WEB_SCHEME = "http://";
     public static final String TOPIC_SCHEME = "com.zheblog.weibo.topic://";
