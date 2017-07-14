@@ -60,7 +60,6 @@ public enum TimeLineStatus {
 如果对您有帮助请Star，有问题随时联系我，谢谢.
 
 ###关于我
-QQ交流群: 496946393
 
 邮箱: nh_zhe@163.com
 
