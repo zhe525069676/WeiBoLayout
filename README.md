@@ -2,7 +2,7 @@
 仿微博、微信QQ，包含展示动态(Feed)图片，不同数量不同布局的GridView和识别包含超链接、#字话题、@人的文本效果。
 ---
 
-### WeiBoLayout中的FeedGridView是根据显示子View的个数，使其填充满屏幕宽度的View，WeiBoLayout可识别文本中的超链接、#字话题、@人，适用于社交软件Feed的展示。###
+### WeiBoLayout中的FeedGridView是根据显示子View的个数，使其填充满屏幕宽度的View，WeiBoLayout可识别文本中的超链接、#字话题、@人，适用于社交软件Feed的展示。 ###
 
 
 FeedGridView XML:
@@ -52,8 +52,6 @@ public enum TimeLineStatus {
 动态效果图：
 
 ![识别文本](https://github.com/zhe525069676/WeiBoLayout/blob/master/gif/WeiBoLayoutDes.gif)
-
-###[GitHub代码下载](https://github.com/zhe525069676/WeiBoLayout)
 
 ### 最后 ###
 
